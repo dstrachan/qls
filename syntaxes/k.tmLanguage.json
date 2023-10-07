@@ -4,22 +4,63 @@
   "scopeName": "source.k",
   "patterns": [
     {
-      "match": "^/\\s*\\S.*$",
-      "name": "comment.line"
+      "name": "comment.line",
+      "match": "^/\\s*\\S.*$"
     },
     {
-      "match": "\\s/.*$",
-      "name": "comment.line"
+      "name": "comment.line",
+      "match": "\\s/.*$"
     },
     {
+      "name": "comment.block",
       "begin": "^/\\s*$",
-      "end": "^\\\\\\s*$",
-      "name": "comment.block"
+      "end": "^\\\\\\s*$"
     },
     {
+      "name": "comment.block.trailing",
       "begin": "^\\\\\\s*$",
-      "end": "\\A(?!x)x",
-      "name": "comment.block"
+      "end": "\\A(?!x)x"
+    },
+    {
+      "name": "comment.block.start",
+      "begin": "\\A\\s",
+      "while": "^\\s"
+    },
+    {
+      "name": "string",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
+      "comment": "symbol",
+      "name": "entity.name.type",
+      "match": "`[a-zA-Z0-9.]*(:[a-zA-Z0-9.:/]*|[a-zA-Z0-9.]*)"
+    },
+    {
+      "name": "keyword.directory",
+      "match": "^\\\\d\\s+\\.\\w*"
+    },
+    {
+      "name": "keyword.system",
+      "match": "^\\\\\\w.*$"
+    },
+    {
+      "name": "keyword",
+      "match": "\\b(abs|acos|asin|atan|avg|bin|binr|cor|cos|cov|dev|div|enlist|exit|exp|getenv|hopen|in|insert|last|like|log|max|min|prd|setenv|sin|sqrt|ss|sum|tan|var|wavg|within|wsum|xexp)\\b"
+    },
+    {
+      "name": "keyword.control",
+      "match": "\\b(do|if|while)\\b"
+    },
+    {
+      "name": "keyword.sql",
+      "match": "\\b(delete|exec|select|update)\\b"
     }
   ]
 }
