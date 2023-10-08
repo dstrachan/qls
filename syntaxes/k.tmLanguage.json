@@ -4,63 +4,160 @@
   "scopeName": "source.k",
   "patterns": [
     {
-      "name": "comment.line",
-      "match": "^/\\s*\\S.*$"
+      "include": "#comments"
     },
     {
-      "name": "comment.line",
-      "match": "\\s/.*$"
+      "include": "#keywords"
     },
     {
-      "name": "comment.block",
-      "begin": "^/\\s*$",
-      "end": "^\\\\\\s*$"
+      "include": "#variables"
     },
     {
-      "name": "comment.block.trailing",
-      "begin": "^\\\\\\s*$",
-      "end": "\\A(?!x)x"
-    },
-    {
-      "name": "comment.block.start",
-      "begin": "\\A\\s",
-      "while": "^\\s"
-    },
-    {
-      "name": "string",
-      "begin": "\"",
-      "end": "\"",
+      "include": "#constants"
+    }
+  ],
+  "repository": {
+    "comments": {
       "patterns": [
         {
-          "name": "constant.character.escape",
-          "match": "\\\\."
+          "name": "comment.line",
+          "match": "^/\\s*\\S.*$"
+        },
+        {
+          "name": "comment.line",
+          "match": "\\s/.*$"
+        },
+        {
+          "name": "comment.block",
+          "begin": "^/\\s*$",
+          "end": "^\\\\\\s*$"
+        },
+        {
+          "name": "comment.block.trailing",
+          "begin": "^\\\\\\s*$",
+          "end": "\\A(?!x)x"
+        },
+        {
+          "name": "comment.block.start",
+          "begin": "\\A\\s",
+          "while": "^\\s"
         }
       ]
     },
-    {
-      "comment": "symbol",
-      "name": "entity.name.type",
-      "match": "`[a-zA-Z0-9.]*(:[a-zA-Z0-9.:/]*|[a-zA-Z0-9.]*)"
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.directory",
+          "match": "^\\\\d\\s+\\.\\w*"
+        },
+        {
+          "name": "keyword.system",
+          "match": "^\\\\\\w.*$"
+        },
+        {
+          "name": "keyword",
+          "match": "\\b(abs|acos|asin|atan|avg|bin|binr|cor|cos|cov|dev|div|enlist|exit|exp|getenv|hopen|in|insert|last|like|log|max|min|prd|setenv|sin|sqrt|ss|sum|tan|var|wavg|within|wsum|xexp)\\b"
+        },
+        {
+          "name": "keyword.control",
+          "match": "\\b(do|if|while)\\b"
+        },
+        {
+          "name": "keyword.sql",
+          "match": "\\b(delete|exec|select|update)\\b"
+        },
+        {
+          "name": "variable.language",
+          "match": "\\.z\\.(D|K|N|P|T|W|X|Z|a|ac|b|bm|c|d|e|ex|exit|ey|f|h|i|k|l|n|o|p|pc|pd|pg|ph|pi|pm|po|pp|pq|ps|pw|q|s|t|ts|u|vs|w|wc|wo|ws|x|z|zd)\\b"
+        }
+      ]
     },
-    {
-      "name": "keyword.directory",
-      "match": "^\\\\d\\s+\\.\\w*"
+    "variables": {
+      "patterns": [
+        {
+          "comment": "function",
+          "match": "(\\.?[a-zA-Z]\\w*):\\s*{",
+          "captures": {
+            "1": {
+              "name": "entity.name.function"
+            }
+          }
+        },
+        {
+          "comment": "variable",
+          "match": "(\\.?[a-zA-Z](\\w|\\.)*)\\s*[-_~=!@#$%^&*+|,<>?]?::?",
+          "captures": {
+            "1": {
+              "name": "variable"
+            }
+          }
+        }
+      ]
     },
-    {
-      "name": "keyword.system",
-      "match": "^\\\\\\w.*$"
-    },
-    {
-      "name": "keyword",
-      "match": "\\b(abs|acos|asin|atan|avg|bin|binr|cor|cos|cov|dev|div|enlist|exit|exp|getenv|hopen|in|insert|last|like|log|max|min|prd|setenv|sin|sqrt|ss|sum|tan|var|wavg|within|wsum|xexp)\\b"
-    },
-    {
-      "name": "keyword.control",
-      "match": "\\b(do|if|while)\\b"
-    },
-    {
-      "name": "keyword.sql",
-      "match": "\\b(delete|exec|select|update)\\b"
+    "constants": {
+      "patterns": [
+        {
+          "comment": "io",
+          "name": "constant.language",
+          "match": "\\b[012]:"
+        },
+        {
+          "comment": "boolean",
+          "name": "constant.numeric",
+          "match": "\\b[01]+b\\b"
+        },
+        {
+          "comment": "byte",
+          "name": "constant.numeric",
+          "match": "\\b0x[0-9a-fA-F]+\\b"
+        },
+        {
+          "comment": "null/infinity",
+          "name": "constant.numeric",
+          "match": "\\b0[nNwW][cefghijmndzuvtp]?\\b"
+        },
+        {
+          "comment": "number",
+          "name": "constant.numeric",
+          "match": "\\b[0-9]+[cefhijnptuv]?\\b"
+        },
+        {
+          "comment": "float",
+          "name": "constant.numeric",
+          "match": "\\b\\d*[0-9\\.]\\d*(e[-+]?\\d+)?[ef]?\\b"
+        },
+        {
+          "name": "string.quoted.double",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "comment": "symbol",
+          "name": "entity.name.type",
+          "match": "`[a-zA-Z0-9\\.]*(:[a-zA-Z0-9\\.:/]*|[a-zA-Z0-9\\.]*)"
+        },
+        {
+          "comment": "timespan/timestamp",
+          "name": "constant.numeric",
+          "match": "\\b(\\d{4}\\.\\d{2}\\.\\d{2}|\\d+)D(\\d{2}(:\\d{2}(:\\d{2})?)?)?(\\.\\d{,9})?\\b"
+        },
+        {
+          "comment": "month/date/datetime",
+          "name": "constant.numeric",
+          "match": "\\b\\d{4}\\.\\d{2}(m|\\.\\d{2}(T(\\d{2}(:\\d{2}(:\\d{2})?)?)?(\\.\\d{,3})?)?)\\b"
+        },
+        {
+          "comment": "time",
+          "name": "constant.numeric",
+          "match": "\\b\\d{2}:\\d{2}(:\\d{2})?(\\.\\d{,3})?\\b"
+        }
+      ]
     }
-  ]
+  }
 }
