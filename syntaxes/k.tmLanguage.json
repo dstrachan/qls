@@ -35,7 +35,7 @@
         {
           "name": "comment.block.trailing",
           "begin": "^\\\\\\s*$",
-          "end": "\\A(?!x)x"
+          "end": "\\z"
         },
         {
           "name": "comment.block.start",
@@ -75,22 +75,9 @@
     "variables": {
       "patterns": [
         {
-          "comment": "function",
-          "match": "(\\.?[a-zA-Z]\\w*):\\s*{",
-          "captures": {
-            "1": {
-              "name": "entity.name.function"
-            }
-          }
-        },
-        {
           "comment": "variable",
-          "match": "(\\.?[a-zA-Z](\\w|\\.)*)\\s*[-_~=!@#$%^&*+|,<>?]?::?",
-          "captures": {
-            "1": {
-              "name": "variable"
-            }
-          }
+          "match": "\\.?[a-zA-Z][a-zA-Z\\d]*(\\.[a-zA-Z][a-zA-Z\\d]*)*",
+          "name": "variable"
         }
       ]
     },
