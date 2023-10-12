@@ -1,4 +1,5 @@
 / SYNTAX TEST "source.k"
+
 function:{[arg1;arg2]
 / <-------- variable
 /          ^^^^ variable
@@ -12,11 +13,18 @@ function:{[arg1;arg2]
 /    ^ variable
 /      ^ variable
 /         ^ variable
+/           ^ constant.numeric
   }
 variable:1
 / <-------- variable
+/        ^ constant.numeric
 
 .namespaced.function:{}
 / <-------------------- variable
 .namespaced.variable:1
 / <-------------------- variable
+/                    ^ constant.numeric
+
+1variable:1
+/ <--------- -variable
+/         ^ constant.numeric

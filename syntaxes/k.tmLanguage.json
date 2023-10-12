@@ -76,7 +76,7 @@
       "patterns": [
         {
           "comment": "variable",
-          "match": "\\.?[a-zA-Z][a-zA-Z\\d]*(\\.[a-zA-Z][a-zA-Z\\d]*)*",
+          "match": "(?<![a-zA-Z\\d])\\.?[a-zA-Z][a-zA-Z\\d]*(\\.[a-zA-Z\\d]+)*",
           "name": "variable"
         }
       ]
@@ -84,34 +84,54 @@
     "constants": {
       "patterns": [
         {
-          "comment": "io",
-          "name": "constant.language",
-          "match": "\\b[012]:"
-        },
-        {
-          "comment": "boolean",
+          "comment": "guid",
           "name": "constant.numeric",
-          "match": "\\b[01]+b\\b"
-        },
-        {
-          "comment": "byte",
-          "name": "constant.numeric",
-          "match": "\\b0x[0-9a-fA-F]+\\b"
+          "match": "\\b0[nN]g\\b"
         },
         {
           "comment": "null/infinity",
           "name": "constant.numeric",
-          "match": "\\b0[nNwW][cefghijmndzuvtp]?\\b"
+          "match": "(-?0[wW]|0[nN])[hijefcpmdznuvt]?\\b"
+        },
+        {
+          "comment": "boolean",
+          "match": "[01]+b",
+          "name": "constant.numeric"
+        },
+        {
+          "comment": "io",
+          "match": "\\b[012]:",
+          "name": "constant.language"
+        },
+        {
+          "comment": "byte",
+          "match": "0x[[:xdigit:]]*",
+          "name": "constant.numeric"
+        },
+        {
+          "comment": "time",
+          "match": "\\d{2}:[0-5]\\d(:[0-5]\\d(\\.\\d+)?)?",
+          "name": "constant.numeric"
+        },
+        {
+          "comment": "date",
+          "match": "\\d{4}\\.[01]\\d(\\.[01]\\d|m)",
+          "name": "constant.numeric"
+        },
+        {
+          "comment": "timestamp",
+          "match": "(\\d{4}\\.[01]\\d\\.[0-3]\\d[DT]|\\d+D)([012]\\d:[0-5]\\d:[0-5]\\d(\\.\\d+)?)?",
+          "name": "constant.numeric"
         },
         {
           "comment": "number",
-          "name": "constant.numeric",
-          "match": "\\b[0-9]+[cefhijnptuv]?\\b"
+          "match": "-?\\d+(e[+-]?\\d+)?[hijefcnuvt]?",
+          "name": "constant.numeric"
         },
         {
-          "comment": "float",
-          "name": "constant.numeric",
-          "match": "\\b\\d*[0-9\\.]\\d*(e[-+]?\\d+)?[ef]?\\b"
+          "comment": "number",
+          "match": "-?(\\d+)?\\.\\d*(e[+-]?\\d+)?[ef]?",
+          "name": "constant.numeric"
         },
         {
           "name": "string.quoted.double",
@@ -128,21 +148,6 @@
           "comment": "symbol",
           "name": "entity.name.type",
           "match": "`[a-zA-Z0-9\\.]*(:[a-zA-Z0-9\\.:/]*|[a-zA-Z0-9\\.]*)"
-        },
-        {
-          "comment": "timespan/timestamp",
-          "name": "constant.numeric",
-          "match": "\\b(\\d{4}\\.\\d{2}\\.\\d{2}|\\d+)D(\\d{2}(:\\d{2}(:\\d{2})?)?)?(\\.\\d{,9})?\\b"
-        },
-        {
-          "comment": "month/date/datetime",
-          "name": "constant.numeric",
-          "match": "\\b\\d{4}\\.\\d{2}(m|\\.\\d{2}(T(\\d{2}(:\\d{2}(:\\d{2})?)?)?(\\.\\d{,3})?)?)\\b"
-        },
-        {
-          "comment": "time",
-          "name": "constant.numeric",
-          "match": "\\b\\d{2}:\\d{2}(:\\d{2})?(\\.\\d{,3})?\\b"
         }
       ]
     }

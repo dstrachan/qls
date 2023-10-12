@@ -1,4 +1,5 @@
 / SYNTAX TEST "source.k"
+
 \d .
 / <---- keyword.directory
 \d . /this is a comment

@@ -1,4 +1,5 @@
 / SYNTAX TEST "source.k"
+
  this is a comment
 / <------------------ comment.block.start
  at the start of a file
