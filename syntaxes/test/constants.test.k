@@ -2,465 +2,465 @@
 
 / io
 0:`test.csv
-/ <-- constant.language
-/ ^^^^^^^^^ entity.name.type
+/ <-- constant.language.k
+/ ^^^^^^^^^ entity.name.type.symbol.k
 data:0:`test.csv
-/ <---- variable
-/    ^^ constant.language
-/      ^^^^^^^^^ entity.name.type
+/ <---- variable.k
+/    ^^ constant.language.k
+/      ^^^^^^^^^ entity.name.type.symbol.k
 `test.csv 0:0:`test.csv
-/ <--------- entity.name.type
-/         ^^ constant.language
-/           ^^ constant.language
-/             ^^^^^^^^^ entity.name.type
+/ <--------- entity.name.type.symbol.k
+/         ^^ constant.language.k
+/           ^^ constant.language.k
+/             ^^^^^^^^^ entity.name.type.symbol.k
 `test.csv 0:data:0:`test.csv
-/ <--------- entity.name.type
-/         ^^ constant.language
-/           ^^^^ variable
-/                ^^ constant.language
-/                  ^^^^^^^^^ entity.name.type
+/ <--------- entity.name.type.symbol.k
+/         ^^ constant.language.k
+/           ^^^^ variable.k
+/                ^^ constant.language.k
+/                  ^^^^^^^^^ entity.name.type.symbol.k
 00:`test.csv
-/ <--- -constant.language
-/  ^^^^^^^^^ entity.name.type
+/ <--- -constant.language.k
+/  ^^^^^^^^^ entity.name.type.symbol.k
 
 1:`test
-/ <-- constant.language
-/ ^^^^^ entity.name.type
+/ <-- constant.language.k
+/ ^^^^^ entity.name.type.symbol.k
 data:1:`test
-/ <---- variable
-/    ^^ constant.language
-/      ^^^^^ entity.name.type
+/ <---- variable.k
+/    ^^ constant.language.k
+/      ^^^^^ entity.name.type.symbol.k
 `test 1:1:`test
-/ <----- entity.name.type
-/     ^^ constant.language
-/       ^^ constant.language
-/         ^^^^^ entity.name.type
+/ <----- entity.name.type.symbol.k
+/     ^^ constant.language.k
+/       ^^ constant.language.k
+/         ^^^^^ entity.name.type.symbol.k
 `test 1:data:1:`test
-/ <----- entity.name.type
-/     ^^ constant.language
-/       ^^^^ variable
-/            ^^ constant.language
-/              ^^^^^ entity.name.type
+/ <----- entity.name.type.symbol.k
+/     ^^ constant.language.k
+/       ^^^^ variable.k
+/            ^^ constant.language.k
+/              ^^^^^ entity.name.type.symbol.k
 01:`test
-/ <--- -constant.language
-/  ^^^^^ entity.name.type
+/ <--- -constant.language.k
+/  ^^^^^ entity.name.type.symbol.k
 
 fun:`test 2:(`fun;1)
-/ <--- variable
-/   ^^^^^ entity.name.type
-/         ^^ constant.language
-/            ^^^^ entity.name.type
-/                 ^ constant.numeric
+/ <--- variable.k
+/   ^^^^^ entity.name.type.symbol.k
+/         ^^ constant.language.k
+/            ^^^^ entity.name.type.symbol.k
+/                 ^ constant.numeric.k
 02:(`fun;1)
-/ <--- -constant.language
-/   ^^^^ entity.name.type
-/        ^ constant.numeric
+/ <--- -constant.language.k
+/   ^^^^ entity.name.type.symbol.k
+/        ^ constant.numeric.k
 
 / boolean
 0b
-/ <-- constant.numeric
+/ <-- constant.numeric.k
 1b
-/ <-- constant.numeric
+/ <-- constant.numeric.k
 00b
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 01b
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 10b
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 11b
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 
 / guid
 0Ng
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0ng
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 
 / byte
 0x
-/ <-- constant.numeric
+/ <-- constant.numeric.k
 0x0
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0x00
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0x0123456789abcdefABCDEF
-/ <------------------------ constant.numeric
+/ <------------------------ constant.numeric.k
 
 / short
 0123456789h
-/ <----------- constant.numeric
+/ <----------- constant.numeric.k
 0Nh
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0nh
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wh
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wh
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wh
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wh
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / int
 0123456789i
-/ <----------- constant.numeric
+/ <----------- constant.numeric.k
 0Ni
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0ni
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wi
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wi
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wi
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wi
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / long
 0123456789
-/ <----------- constant.numeric
+/ <----------- constant.numeric.k
 0123456789j
-/ <----------- constant.numeric
+/ <----------- constant.numeric.k
 0N
-/ <------------ constant.numeric
+/ <------------ constant.numeric.k
 0Nj
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0nj
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0W
-/ <-- constant.numeric
+/ <-- constant.numeric.k
 -0W
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wj
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wj
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wj
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wj
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 
 / real
 0123456789e
-/ <----------- constant.numeric
+/ <----------- constant.numeric.k
 .0123456789e
-/ <------------ constant.numeric
+/ <------------ constant.numeric.k
 0123456789.e
-/ <------------ constant.numeric
+/ <------------ constant.numeric.k
 0123456789.0123456789e
-/ <---------------------- constant.numeric
+/ <---------------------- constant.numeric.k
 0123456789e0123456789e
-/ <---------------------- constant.numeric
+/ <---------------------- constant.numeric.k
 0123456789e+0123456789e
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 0123456789e-0123456789e
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 .0123456789e0123456789e
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 .0123456789e+0123456789e
-/ <------------------------ constant.numeric
+/ <------------------------ constant.numeric.k
 .0123456789e-0123456789e
-/ <------------------------ constant.numeric
+/ <------------------------ constant.numeric.k
 0123456789.e0123456789e
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 0123456789.e+0123456789e
-/ <------------------------ constant.numeric
+/ <------------------------ constant.numeric.k
 0123456789.e-0123456789e
-/ <------------------------ constant.numeric
+/ <------------------------ constant.numeric.k
 0123456789.0123456789e0123456789e
-/ <--------------------------------- constant.numeric
+/ <--------------------------------- constant.numeric.k
 0123456789.0123456789e+0123456789e
-/ <---------------------------------- constant.numeric
+/ <---------------------------------- constant.numeric.k
 0123456789.0123456789e-0123456789e
-/ <---------------------------------- constant.numeric
+/ <---------------------------------- constant.numeric.k
 0Ne
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0ne
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0We
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0We
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0we
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0we
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / float
 0123456789f
-/ <----------- constant.numeric
+/ <----------- constant.numeric.k
 .0123456789
-/ <----------- constant.numeric
+/ <----------- constant.numeric.k
 .0123456789f
-/ <------------ constant.numeric
+/ <------------ constant.numeric.k
 0123456789.
-/ <----------- constant.numeric
+/ <----------- constant.numeric.k
 0123456789.f
-/ <------------ constant.numeric
+/ <------------ constant.numeric.k
 0123456789.0123456789
-/ <--------------------- constant.numeric
+/ <--------------------- constant.numeric.k
 0123456789.0123456789f
-/ <---------------------- constant.numeric
+/ <---------------------- constant.numeric.k
 0123456789e0123456789
-/ <--------------------- constant.numeric
+/ <--------------------- constant.numeric.k
 0123456789e+0123456789
-/ <---------------------- constant.numeric
+/ <---------------------- constant.numeric.k
 0123456789e-0123456789
-/ <---------------------- constant.numeric
+/ <---------------------- constant.numeric.k
 0123456789e0123456789f
-/ <---------------------- constant.numeric
+/ <---------------------- constant.numeric.k
 0123456789e+0123456789f
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 0123456789e-0123456789f
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 .0123456789e0123456789
-/ <---------------------- constant.numeric
+/ <---------------------- constant.numeric.k
 .0123456789e+0123456789
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 .0123456789e-0123456789
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 .0123456789e0123456789f
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 .0123456789e+0123456789f
-/ <------------------------ constant.numeric
+/ <------------------------ constant.numeric.k
 .0123456789e-0123456789f
-/ <------------------------ constant.numeric
+/ <------------------------ constant.numeric.k
 0123456789.e0123456789
-/ <---------------------- constant.numeric
+/ <---------------------- constant.numeric.k
 0123456789.e+0123456789
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 0123456789.e-0123456789
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 0123456789.e0123456789f
-/ <----------------------- constant.numeric
+/ <----------------------- constant.numeric.k
 0123456789.e+0123456789f
-/ <------------------------ constant.numeric
+/ <------------------------ constant.numeric.k
 0123456789.e-0123456789f
-/ <------------------------ constant.numeric
+/ <------------------------ constant.numeric.k
 0123456789.0123456789e0123456789
-/ <-------------------------------- constant.numeric
+/ <-------------------------------- constant.numeric.k
 0123456789.0123456789e+0123456789
-/ <--------------------------------- constant.numeric
+/ <--------------------------------- constant.numeric.k
 0123456789.0123456789e-0123456789
-/ <--------------------------------- constant.numeric
+/ <--------------------------------- constant.numeric.k
 0123456789.0123456789e0123456789f
-/ <--------------------------------- constant.numeric
+/ <--------------------------------- constant.numeric.k
 0123456789.0123456789e+0123456789f
-/ <---------------------------------- constant.numeric
+/ <---------------------------------- constant.numeric.k
 0123456789.0123456789e-0123456789f
-/ <---------------------------------- constant.numeric
+/ <---------------------------------- constant.numeric.k
 0Nf
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0n
-/ <-- constant.numeric
+/ <-- constant.numeric.k
 0nf
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wf
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wf
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0w
-/ <-- constant.numeric
+/ <-- constant.numeric.k
 -0w
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0wf
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wf
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / char
 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-/ <------------------------------------------------------ string.quoted.double
+/ <------------------------------------------------------ string.quoted.double.k
 0123456789c
-/ <-- constant.numeric
+/ <-- constant.numeric.k
 -0123456789c
-/ <-- constant.numeric
+/ <-- constant.numeric.k
 0Nc
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0nc
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wc
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wc
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wc
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wc
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / symbol
 `sym
-/ <---- entity.name.type
+/ <---- entity.name.type.symbol.k
 `sym_sym
-/ <---- entity.name.type
-/    ^^^ variable
+/ <---- entity.name.type.symbol.k
+/    ^^^ variable.k
 `sym/sym
-/ <---- entity.name.type
-/    ^^^ variable
+/ <---- entity.name.type.symbol.k
+/    ^^^ variable.k
 `:sym
-/ <----- entity.name.type
+/ <----- entity.name.type.symbol.handle.k
 `:sym_sym
-/ <----- entity.name.type
-/     ^^^ variable
+/ <----- entity.name.type.symbol.handle.k
+/     ^^^ variable.k
 `:sym/sym
-/ <--------- entity.name.type
+/ <--------- entity.name.type.symbol.handle.k
 `s:ym/sym
-/ <--------- entity.name.type
+/ <--------- entity.name.type.symbol.k
 `s/ym:sym
-/ <-- entity.name.type
-/  ^^ variable
-/     ^^^variable
+/ <-- entity.name.type.symbol.k
+/  ^^ variable.k
+/     ^^^variable.k
 
 / timestamp
 1999.12.31D
-/ <----------- constant.numeric
+/ <----------- constant.numeric.k
 1999.12.31D23:59:59
-/ <------------------- constant.numeric
+/ <------------------- constant.numeric.k
 1999.12.31D23:59:59.
-/ <-------------------- constant.numeric
+/ <-------------------- constant.numeric.k
 1999.12.31D23:59:59.123456789
-/ <----------------------------- constant.numeric
+/ <----------------------------- constant.numeric.k
 0Np
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0np
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wp
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wp
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wp
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wp
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / month
 1999.12m
-/ <-------- constant.numeric
+/ <-------- constant.numeric.k
 0Nm
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0nm
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wm
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wm
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wm
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wm
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / date
 1999.12.31
-/ <---------- constant.numeric
+/ <---------- constant.numeric.k
 0Nd
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0nd
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wd
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wd
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wd
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wd
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / datetime
 1999.12.31T
-/ <----------- constant.numeric
+/ <----------- constant.numeric.k
 1999.12.31T23:59:59
-/ <------------------- constant.numeric
+/ <------------------- constant.numeric.k
 1999.12.31T23:59:59.
-/ <-------------------- constant.numeric
+/ <-------------------- constant.numeric.k
 1999.12.31T23:59:59.123
-/ <----------------------------- constant.numeric
+/ <----------------------------- constant.numeric.k
 0Nz
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0nz
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wz
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wz
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wz
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wz
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / timespan
 0123456789D
-/ <----------- constant.numeric
+/ <----------- constant.numeric.k
 0123456789D23:59:59
-/ <------------------- constant.numeric
+/ <------------------- constant.numeric.k
 0123456789D23:59:59.
-/ <-------------------- constant.numeric
+/ <-------------------- constant.numeric.k
 0123456789D23:59:59.123456789
-/ <----------------------------- constant.numeric
+/ <----------------------------- constant.numeric.k
 0Nn
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0nn
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wn
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wn
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wn
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wn
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / minute
 00:00
-/ <----- constant.numeric
+/ <----- constant.numeric.k
 99:59
-/ <------ constant.numeric
+/ <------ constant.numeric.k
 0Nu
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0nu
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wu
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wu
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wu
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wu
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / second
 00:00:00
-/ <-------- constant.numeric
+/ <-------- constant.numeric.k
 99:59:59
-/ <--------- constant.numeric
+/ <--------- constant.numeric.k
 0Nv
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0nv
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wv
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wv
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wv
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wv
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 
 / time
 00:00:00.000
-/ <------------ constant.numeric
+/ <------------ constant.numeric.k
 99:59:59.999
-/ <------------ constant.numeric
+/ <------------ constant.numeric.k
 0Nt
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0nt
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 0Wt
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0Wt
-/ <---- constant.numeric
+/ <---- constant.numeric.k
 0wt
-/ <--- constant.numeric
+/ <--- constant.numeric.k
 -0wt
-/ <---- constant.numeric
+/ <---- constant.numeric.k

@@ -1,208 +1,208 @@
 / SYNTAX TEST "source.k"
 
 \d .
-/ <---- keyword.directory
+/ <-- keyword.system.k
 \d . /this is a comment
-/ <---- keyword.directory
-/    ^^^^^^^^^^^^^^^^^^ comment.line
+/ <-- keyword.system.k
+/    ^^^^^^^^^^^^^^^^^^ comment.line.k
 \d .Q
-/ <----- keyword.directory
+/ <-- keyword.system.k
 \d .Q /this is a comment
-/ <----- keyword.directory
-/     ^^^^^^^^^^^^^^^^^^ comment.line
+/ <-- keyword.system.k
+/     ^^^^^^^^^^^^^^^^^^ comment.line.k
 
 \ls -ld file1.txt file2.txt
-/ <--------------------------- keyword.system
+/ <--------------------------- keyword.system.k
 \ls -l . /this is not a comment
-/ <------------------------------- keyword.system
+/ <------------------------------- keyword.system.k
 /        ^^^^^^^^^^^^^^^^^^^^^^ -comment.line
 
 abs
-/ <--- keyword
+/ <--- keyword.k
 acos
-/ <---- keyword
+/ <---- keyword.k
 asin
-/ <---- keyword
+/ <---- keyword.k
 atan
-/ <---- keyword
+/ <---- keyword.k
 avg
-/ <--- keyword
+/ <--- keyword.k
 bin
-/ <--- keyword
+/ <--- keyword.k
 binr
-/ <---- keyword
+/ <---- keyword.k
 cor
-/ <--- keyword
+/ <--- keyword.k
 cos
-/ <--- keyword
+/ <--- keyword.k
 cov
-/ <--- keyword
+/ <--- keyword.k
 dev
-/ <--- keyword
+/ <--- keyword.k
 div
-/ <--- keyword
+/ <--- keyword.k
 enlist
-/ <------ keyword
+/ <------ keyword.k
 exit
-/ <---- keyword
+/ <---- keyword.k
 exp
-/ <--- keyword
+/ <--- keyword.k
 getenv
-/ <------ keyword
+/ <------ keyword.k
 hopen
-/ <---- keyword
+/ <---- keyword.k
 in
-/ <-- keyword
+/ <-- keyword.k
 insert
-/ <------ keyword
+/ <------ keyword.k
 last
-/ <---- keyword
+/ <---- keyword.k
 like
-/ <---- keyword
+/ <---- keyword.k
 log
-/ <--- keyword
+/ <--- keyword.k
 max
-/ <--- keyword
+/ <--- keyword.k
 min
-/ <--- keyword
+/ <--- keyword.k
 prd
-/ <--- keyword
+/ <--- keyword.k
 setenv
-/ <------ keyword
+/ <------ keyword.k
 sin
-/ <--- keyword
+/ <--- keyword.k
 sqrt
-/ <---- keyword
+/ <---- keyword.k
 ss
-/ <-- keyword
+/ <-- keyword.k
 sum
-/ <--- keyword
+/ <--- keyword.k
 tan
-/ <--- keyword
+/ <--- keyword.k
 var
-/ <--- keyword
+/ <--- keyword.k
 wavg
-/ <---- keyword
+/ <---- keyword.k
 within
-/ <------ keyword
+/ <------ keyword.k
 wsum
-/ <---- keyword
+/ <---- keyword.k
 xexp
-/ <---- keyword
+/ <---- keyword.k
 
 do
-/ <-- keyword.control
+/ <-- keyword.control.k
 if
-/ <-- keyword.control
+/ <-- keyword.control.k
 while
-/ <----- keyword.control
+/ <----- keyword.control.k
 
 delete
-/ <------ keyword.sql
+/ <------ keyword.sql.k
 exec
-/ <---- keyword.sql
+/ <---- keyword.sql.k
 select
-/ <------ keyword.sql
+/ <------ keyword.sql.k
 update
-/ <------ keyword.sql
+/ <------ keyword.sql.k
 
 .z.D
-/ <---- variable.language
+/ <---- variable.language.k
 .z.K
-/ <---- variable.language
+/ <---- variable.language.k
 .z.N
-/ <---- variable.language
+/ <---- variable.language.k
 .z.P
-/ <---- variable.language
+/ <---- variable.language.k
 .z.T
-/ <---- variable.language
+/ <---- variable.language.k
 .z.W
-/ <---- variable.language
+/ <---- variable.language.k
 .z.X
-/ <---- variable.language
+/ <---- variable.language.k
 .z.Z
-/ <---- variable.language
+/ <---- variable.language.k
 .z.a
-/ <---- variable.language
+/ <---- variable.language.k
 .z.ac
-/ <----- variable.language
+/ <----- variable.language.k
 .z.b
-/ <---- variable.language
+/ <---- variable.language.k
 .z.bm
-/ <----- variable.language
+/ <----- variable.language.k
 .z.c
-/ <---- variable.language
+/ <---- variable.language.k
 .z.d
-/ <---- variable.language
+/ <---- variable.language.k
 .z.e
-/ <---- variable.language
+/ <---- variable.language.k
 .z.ex
-/ <----- variable.language
+/ <----- variable.language.k
 .z.exit
-/ <------- variable.language
+/ <------- variable.language.k
 .z.ey
-/ <----- variable.language
+/ <----- variable.language.k
 .z.f
-/ <---- variable.language
+/ <---- variable.language.k
 .z.h
-/ <---- variable.language
+/ <---- variable.language.k
 .z.i
-/ <---- variable.language
+/ <---- variable.language.k
 .z.k
-/ <---- variable.language
+/ <---- variable.language.k
 .z.l
-/ <---- variable.language
+/ <---- variable.language.k
 .z.n
-/ <---- variable.language
+/ <---- variable.language.k
 .z.o
-/ <---- variable.language
+/ <---- variable.language.k
 .z.p
-/ <---- variable.language
+/ <---- variable.language.k
 .z.pc
-/ <----- variable.language
+/ <----- variable.language.k
 .z.pd
-/ <----- variable.language
+/ <----- variable.language.k
 .z.pg
-/ <----- variable.language
+/ <----- variable.language.k
 .z.ph
-/ <----- variable.language
+/ <----- variable.language.k
 .z.pi
-/ <----- variable.language
+/ <----- variable.language.k
 .z.pm
-/ <----- variable.language
+/ <----- variable.language.k
 .z.po
-/ <----- variable.language
+/ <----- variable.language.k
 .z.pp
-/ <----- variable.language
+/ <----- variable.language.k
 .z.pq
-/ <----- variable.language
+/ <----- variable.language.k
 .z.ps
-/ <----- variable.language
+/ <----- variable.language.k
 .z.pw
-/ <----- variable.language
+/ <----- variable.language.k
 .z.q
-/ <---- variable.language
+/ <---- variable.language.k
 .z.s
-/ <---- variable.language
+/ <---- variable.language.k
 .z.t
-/ <---- variable.language
+/ <---- variable.language.k
 .z.ts
-/ <----- variable.language
+/ <----- variable.language.k
 .z.u
-/ <---- variable.language
+/ <---- variable.language.k
 .z.vs
-/ <----- variable.language
+/ <----- variable.language.k
 .z.w
-/ <---- variable.language
+/ <---- variable.language.k
 .z.wc
-/ <----- variable.language
+/ <----- variable.language.k
 .z.wo
-/ <----- variable.language
+/ <----- variable.language.k
 .z.ws
-/ <----- variable.language
+/ <----- variable.language.k
 .z.x
-/ <---- variable.language
+/ <---- variable.language.k
 .z.z
-/ <---- variable.language
+/ <---- variable.language.k
 .z.zd
-/ <----- variable.language
+/ <----- variable.language.k

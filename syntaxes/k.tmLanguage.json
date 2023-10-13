@@ -4,150 +4,261 @@
   "scopeName": "source.k",
   "patterns": [
     {
-      "include": "#comments"
+      "include": "#string"
     },
     {
-      "include": "#keywords"
+      "include": "#system"
     },
     {
-      "include": "#variables"
+      "include": "#cast"
     },
     {
-      "include": "#constants"
+      "include": "#attribute"
+    },
+    {
+      "include": "#symbol"
+    },
+    {
+      "include": "#dsl"
+    },
+    {
+      "include": "#control"
+    },
+    {
+      "include": "#assign"
+    },
+    {
+      "include": "#conditional"
+    },
+    {
+      "include": "#identifier"
+    },
+    {
+      "include": "#dotz"
+    },
+    {
+      "include": "#primitives"
+    },
+    {
+      "include": "#variable"
+    },
+    {
+      "include": "#constant"
+    },
+    {
+      "include": "#comment"
     }
   ],
   "repository": {
-    "comments": {
+    "string": {
       "patterns": [
         {
-          "name": "comment.line",
-          "match": "^/\\s*\\S.*$"
+          "name": "support.type.cast.k",
+          "match": "\"[[:alpha:]]\"\\$"
         },
         {
-          "name": "comment.line",
-          "match": "\\s/.*$"
-        },
-        {
-          "name": "comment.block",
-          "begin": "^/\\s*$",
-          "end": "^\\\\\\s*$"
-        },
-        {
-          "name": "comment.block.trailing",
-          "begin": "^\\\\\\s*$",
-          "end": "\\z"
-        },
-        {
-          "name": "comment.block.start",
-          "begin": "\\A\\s",
-          "while": "^\\s"
-        }
-      ]
-    },
-    "keywords": {
-      "patterns": [
-        {
-          "name": "keyword.directory",
-          "match": "^\\\\d\\s+\\.\\w*"
-        },
-        {
-          "name": "keyword.system",
-          "match": "^\\\\\\w.*$"
-        },
-        {
-          "name": "keyword",
-          "match": "\\b(abs|acos|asin|atan|avg|bin|binr|cor|cos|cov|dev|div|enlist|exit|exp|getenv|hopen|in|insert|last|like|log|max|min|prd|setenv|sin|sqrt|ss|sum|tan|var|wavg|within|wsum|xexp)\\b"
-        },
-        {
-          "name": "keyword.control",
-          "match": "\\b(do|if|while)\\b"
-        },
-        {
-          "name": "keyword.sql",
-          "match": "\\b(delete|exec|select|update)\\b"
-        },
-        {
-          "name": "variable.language",
-          "match": "\\.z\\.(D|K|N|P|T|W|X|Z|a|ac|b|bm|c|d|e|ex|exit|ey|f|h|i|k|l|n|o|p|pc|pd|pg|ph|pi|pm|po|pp|pq|ps|pw|q|s|t|ts|u|vs|w|wc|wo|ws|x|z|zd)\\b"
-        }
-      ]
-    },
-    "variables": {
-      "patterns": [
-        {
-          "comment": "variable",
-          "match": "(?<![a-zA-Z\\d])\\.?[a-zA-Z][a-zA-Z\\d]*(\\.[a-zA-Z\\d]+)*",
-          "name": "variable"
-        }
-      ]
-    },
-    "constants": {
-      "patterns": [
-        {
-          "comment": "guid",
-          "name": "constant.numeric",
-          "match": "\\b0[nN]g\\b"
-        },
-        {
-          "comment": "null/infinity",
-          "name": "constant.numeric",
-          "match": "(-?0[wW]|0[nN])[hijefcpmdznuvt]?\\b"
-        },
-        {
-          "comment": "boolean",
-          "match": "[01]+b",
-          "name": "constant.numeric"
-        },
-        {
-          "comment": "io",
-          "match": "\\b[012]:",
-          "name": "constant.language"
-        },
-        {
-          "comment": "byte",
-          "match": "0x[[:xdigit:]]*",
-          "name": "constant.numeric"
-        },
-        {
-          "comment": "time",
-          "match": "\\d{2}:[0-5]\\d(:[0-5]\\d(\\.\\d+)?)?",
-          "name": "constant.numeric"
-        },
-        {
-          "comment": "date",
-          "match": "\\d{4}\\.[01]\\d(\\.[01]\\d|m)",
-          "name": "constant.numeric"
-        },
-        {
-          "comment": "timestamp",
-          "match": "(\\d{4}\\.[01]\\d\\.[0-3]\\d[DT]|\\d+D)([012]\\d:[0-5]\\d:[0-5]\\d(\\.\\d+)?)?",
-          "name": "constant.numeric"
-        },
-        {
-          "comment": "number",
-          "match": "-?\\d+(e[+-]?\\d+)?[hijefcnuvt]?",
-          "name": "constant.numeric"
-        },
-        {
-          "comment": "number",
-          "match": "-?(\\d+)?\\.\\d*(e[+-]?\\d+)?[ef]?",
-          "name": "constant.numeric"
-        },
-        {
-          "name": "string.quoted.double",
+          "name": "string.quoted.double.k",
           "begin": "\"",
           "end": "\"",
           "patterns": [
             {
-              "name": "constant.character.escape",
+              "name": "constant.character.escape.k",
               "match": "\\\\."
             }
           ]
+        }
+      ]
+    },
+    "system": {
+      "patterns": [
+        {
+          "name": "keyword.system.k",
+          "match": "^\\\\([12abBcCdefglopPrsStTuvwWxz_]|cd|ts)\\b"
         },
         {
-          "comment": "symbol",
-          "name": "entity.name.type",
+          "name": "keyword.system.k",
+          "match": "^\\\\\\w.*$"
+        }
+      ]
+    },
+    "cast": {
+      "patterns": [
+        {
+          "name": "support.type.cast.k",
+          "match": "`(year|week|mm|dd|hh|ss|uu)\\$"
+        },
+        {
+          "name": "support.type.cast.k",
+          "match": "`(boolean|guid|byte|short|int|long|real|float|char|symbol|timestamp|month|date|datetime|timespan|time|minute|second)\\$"
+        }
+      ]
+    },
+    "attribute": {
+      "patterns": [
+        {
+          "name": "support.type.attribute.k",
+          "match": "`[gpsu]#"
+        }
+      ]
+    },
+    "symbol": {
+      "patterns": [
+        {
+          "name": "entity.name.type.symbol.handle.k",
+          "match": "`::?([a-zA-Z0-9\\./]+:?)+"
+        },
+        {
+          "name": "entity.name.type.symbol.k",
           "match": "`[a-zA-Z0-9\\.]*(:[a-zA-Z0-9\\.:/]*|[a-zA-Z0-9\\.]*)"
+        }
+      ]
+    },
+    "dsl": {
+      "patterns": [
+        {
+          "name": "q.k",
+          "match": "^q\\)"
+        },
+        {
+          "name": "s.k",
+          "match": "^s\\)"
+        }
+      ]
+    },
+    "control": {
+      "patterns": [
+        {
+          "name": "keyword.control.k",
+          "match": "\\b(do|while)\\b"
+        }
+      ]
+    },
+    "assign": {
+      "patterns": [
+        {
+          "name": "support.function.k",
+          "match": "::"
+        }
+      ]
+    },
+    "conditional": {
+      "patterns": [
+        {
+          "name": "keyword.control.k",
+          "match": "[$?'.@](?=\\[)"
+        },
+        {
+          "name": "keyword.control.k",
+          "match": "\\bif\\b"
+        }
+      ]
+    },
+    "dotz": {
+      "patterns": [
+        {
+          "name": "variable.language.k",
+          "match": "\\.z\\.(D|K|N|P|T|W|X|Z|a|ac|b|bm|c|d|e|ex|exit|ey|f|h|i|k|l|n|o|p|pc|pd|pg|ph|pi|pm|po|pp|pq|ps|pw|q|s|t|ts|u|vs|w|wc|wo|ws|x|z|zd)\\b"
+        }
+      ]
+    },
+    "primitives": {
+      "patterns": [
+        {
+          "name": "keyword.k",
+          "match": "\\b(abs|acos|asin|atan|avg|bin|binr|cor|cos|cov|dev|div|enlist|exit|exp|getenv|hopen|in|insert|last|like|log|max|min|prd|setenv|sin|sqrt|ss|sum|tan|var|wavg|within|wsum|xexp)\\b"
+        },
+        {
+          "name": "keyword.sql.k",
+          "match": "\\b(delete|exec|select|update)\\b"
+        }
+      ]
+    },
+    "variable": {
+      "patterns": [
+        {
+          "name": "variable.k",
+          "match": "(?<![a-zA-Z\\d])\\.?[a-zA-Z][a-zA-Z\\d]*(\\.[a-zA-Z\\d]+)*"
+        }
+      ]
+    },
+    "constant": {
+      "patterns": [
+        {
+          "comment": "guid",
+          "name": "constant.numeric.k",
+          "match": "\\b0[nN]g\\b"
+        },
+        {
+          "comment": "null/infinity",
+          "name": "constant.numeric.k",
+          "match": "(-?0[wW]|0[nN])[hijefcpmdznuvt]?\\b"
+        },
+        {
+          "comment": "boolean",
+          "name": "constant.numeric.k",
+          "match": "[01]+b"
+        },
+        {
+          "comment": "io",
+          "name": "constant.language.k",
+          "match": "\\b[012]:"
+        },
+        {
+          "comment": "byte",
+          "name": "constant.numeric.k",
+          "match": "0x[[:xdigit:]]*"
+        },
+        {
+          "comment": "time",
+          "name": "constant.numeric.k",
+          "match": "\\d{2}:[0-5]\\d(:[0-5]\\d(\\.\\d+)?)?"
+        },
+        {
+          "comment": "date",
+          "name": "constant.numeric.k",
+          "match": "\\d{4}\\.[01]\\d(\\.[01]\\d|m)"
+        },
+        {
+          "comment": "timestamp",
+          "name": "constant.numeric.k",
+          "match": "(\\d{4}\\.[01]\\d\\.[0-3]\\d[DT]|\\d+D)([012]\\d:[0-5]\\d:[0-5]\\d(\\.\\d+)?)?"
+        },
+        {
+          "comment": "number",
+          "name": "constant.numeric.k",
+          "match": "-?\\d+(e[+-]?\\d+)?[hijefcnuvt]?"
+        },
+        {
+          "comment": "number",
+          "name": "constant.numeric.k",
+          "match": "-?(\\d+)?\\.\\d*(e[+-]?\\d+)?[ef]?"
+        }
+      ]
+    },
+    "comment": {
+      "patterns": [
+        {
+          "name": "comment.line.k",
+          "match": "^/\\s*\\S.*$"
+        },
+        {
+          "name": "comment.line.k",
+          "match": "\\s/.*$"
+        },
+        {
+          "name": "comment.block.k",
+          "begin": "^/\\s*$",
+          "end": "^\\\\\\s*$"
+        },
+        {
+          "name": "comment.block.trailing.k",
+          "begin": "^\\\\\\s*$",
+          "end": "\\z"
+        },
+        {
+          "name": "comment.block.start.k",
+          "begin": "\\A\\s",
+          "while": "^\\s"
         }
       ]
     }
