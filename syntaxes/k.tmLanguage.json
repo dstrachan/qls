@@ -31,12 +31,6 @@
       "include": "#conditional"
     },
     {
-      "include": "#identifier"
-    },
-    {
-      "include": "#dotz"
-    },
-    {
       "include": "#primitives"
     },
     {
@@ -153,16 +147,32 @@
         }
       ]
     },
-    "dotz": {
+    "primitives": {
       "patterns": [
         {
           "name": "variable.language.k",
           "match": "\\.z\\.(D|K|N|P|T|W|X|Z|a|ac|b|bm|c|d|e|ex|exit|ey|f|h|i|k|l|n|o|p|pc|pd|pg|ph|pi|pm|po|pp|pq|ps|pw|q|s|t|ts|u|vs|w|wc|wo|ws|x|z|zd)\\b"
-        }
-      ]
-    },
-    "primitives": {
-      "patterns": [
+        },
+        {
+          "name": "variable.language.k",
+          "match": "\\.q\\.(aj|aj0|ajf|ajf0|all|and|any|asc|asof|attr|avgs|ceiling|cols|count|cross|csv|cut|deltas|desc|differ|distinct|dsave|each|ej|ema|eval|except|fby|fills|first|fkeys|flip|floor|get|group|gtime|hclose|hcount|hdel|hsym|iasc|idesc|ij|ijf|inter|inv|key|keys|lj|ljf|load|lower|lsq|ltime|ltrim|mavg|maxs|mcount|md5|mdev|med|meta|mins|mmax|mmin|mmu|mod|msum|neg|next|not|null|or|over|parse|peach|pj|prds|prev|prior|rand|rank|ratios|raze|read0|read1|reciprocal|reval|reverse|rload|rotate|rsave|rtrim|save|scan|scov|sdev|set|show|signum|ssr|string|sublist|sums|sv|svar|system|tables|til|trim|type|uj|ujf|ungroup|union|upper|upsert|value|view|views|vs|where|wj|wj1|ww|xasc|xbar|xcol|xcols|xdesc|xgroup|xkey|xlog|xprev|xrank)\\b"
+        },
+        {
+          "name": "variable.language.k",
+          "match": "\\.o\\.(B0|C0|Cols|Columns|FG|Fkey|Gkey|Key|PS|Special|Stats|T|T0|TI|Tables|Ts|TypeInfo|ex|o|t)\\b"
+        },
+        {
+          "name": "variable.language.k",
+          "match": "\\.j\\.(J|e|es|j|jd|k|q|s)\\b"
+        },
+        {
+          "name": "variable.language.k",
+          "match": "\\.h\\.(HOME|br|c0|c1|cd|code|d|data|eb|ec|ed|edsn|es|ex|fram|ha|hb|hc|he|hn|hnz|hp|hr|ht|hta|htac|htc|html|http|hu|hug|hy|iso8601|jx|logo|nbr|pre|sa|sb|sc|td|text|tx|ty|uh|val|xd|xmp|xs|xt)\\b"
+        },
+        {
+          "name": "variable.language.k",
+          "match": "\\.Q\\.(A|Aa|BP|Cf|DL|IN|K|L|Ll|Lp|Ls|Lu|Lx|M|MAP|S|V|Xf|a|a0|a1|a2|addmonths|addr|ajf0|an|b6|bc|bd|bp|bs|bt|btoa|btx|bu|bv|chk|cn|d0|dbg|dd|def|dpft|dpfts|dpt|dpts|dr|dsftg|dt|dw|en|ens|enx|enxs|err|f|fc|ff|fk|fl|fmt|foo|fp|fpn|fps|fqk|fql|fs|fsn|ft|fu|gc|gz|hap|hdpf|hg|hmb|host|hp|id|ind|j10|j12|jl8|k|l|ld|lu|n|nA|nct|nv|opt|ord|p|p1|p2|par|pcnt|pl|pl0|pm|prf0|prr|ps|pt|q0|qa|qb|qd|qe|qp|qt|res|s|s1|s2|sbt|sha1|srr|sw|t|t0|tab|trp|ts|tt|tx|ty|ua|unm|v|view|vt|w|x0|x1|x10|x12|x2|xy)\\b"
+        },
         {
           "name": "keyword.k",
           "match": "\\b(abs|acos|asin|atan|avg|bin|binr|cor|cos|cov|dev|div|enlist|exit|exp|getenv|hopen|in|insert|last|like|log|max|min|prd|setenv|sin|sqrt|ss|sum|tan|var|wavg|within|wsum|xexp)\\b"
