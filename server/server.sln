@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLanguageServer", "QLanguageServer\QLanguageServer.csproj", "{4E803B5C-A4BA-4154-8D5A-B1F896E7CFE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLanguageServer.Models", "QLanguageServer.Models\QLanguageServer.Models.csproj", "{F6C0ED4A-5B10-4AC7-9616-BD5AEFAC10E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E803B5C-A4BA-4154-8D5A-B1F896E7CFE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E803B5C-A4BA-4154-8D5A-B1F896E7CFE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E803B5C-A4BA-4154-8D5A-B1F896E7CFE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E803B5C-A4BA-4154-8D5A-B1F896E7CFE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6C0ED4A-5B10-4AC7-9616-BD5AEFAC10E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6C0ED4A-5B10-4AC7-9616-BD5AEFAC10E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6C0ED4A-5B10-4AC7-9616-BD5AEFAC10E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6C0ED4A-5B10-4AC7-9616-BD5AEFAC10E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

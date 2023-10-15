@@ -16,18 +16,18 @@ import {
 let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
-  // The server is implemented in node
-  const serverModule = context.asAbsolutePath(
-    path.join("server", "out", "server.js"),
+  const serverExecutable = context.asAbsolutePath(
+    path.join("server", "out", "QLanguageServer"),
   );
 
-  // If the extension is launched in debug mode then the debug server options are used
-  // Otherwise the run options are used
   const serverOptions: ServerOptions = {
-    run: { module: serverModule, transport: TransportKind.ipc },
+    run: {
+      command: serverExecutable,
+      transport: TransportKind.stdio,
+    },
     debug: {
-      module: serverModule,
-      transport: TransportKind.ipc,
+      command: serverExecutable,
+      transport: TransportKind.stdio,
     },
   };
 
