@@ -18,31 +18,28 @@ internal static class Program
             .MinimumLevel.Verbose()
             .CreateLogger();
 
-        Log.Logger.Information("PID: {PID}", Environment.ProcessId);
-
         while (!Debugger.IsAttached)
         {
             await Task.Delay(1000);
         }
 
-        var server = await LanguageServer.From(options =>
-            options
-                .WithInput(Console.OpenStandardInput())
-                .WithOutput(Console.OpenStandardOutput())
-                .ConfigureLogging(builder => builder
-                    .AddSerilog(Log.Logger)
-                    .AddLanguageProtocolLogging()
-                    .SetMinimumLevel(LogLevel.Debug)
-                )
-                .WithHandler<TextDocumentHandler>()
-                .WithServices(services => services
-                    .AddLogging(builder => builder
-                        .SetMinimumLevel(LogLevel.Trace))
-                )
-                .WithServices(services => { })
-                .OnInitialize(OnInitializeAsync)
-                .OnInitialized(OnInitializedAsync)
-                .OnStarted(OnStartedAsync)
+        var server = await LanguageServer.From(options => options
+            .WithInput(Console.OpenStandardInput())
+            .WithOutput(Console.OpenStandardOutput())
+            .ConfigureLogging(builder => builder
+                .AddSerilog(Log.Logger)
+                .AddLanguageProtocolLogging()
+                .SetMinimumLevel(LogLevel.Debug)
+            )
+            .WithHandler<TextDocumentHandler>()
+            .WithServices(services => services
+                .AddLogging(builder => builder
+                    .SetMinimumLevel(LogLevel.Trace))
+                .AddSingleton<IHandlerService, HandlerService>()
+            )
+            .OnInitialize(OnInitializeAsync)
+            .OnInitialized(OnInitializedAsync)
+            .OnStarted(OnStartedAsync)
         ).ConfigureAwait(false);
         await server.WaitForExit.ConfigureAwait(false);
     }

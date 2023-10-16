@@ -1,18 +1,16 @@
 using System.Diagnostics;
-using System.Text.RegularExpressions;
 using MediatR;
 using OmniSharp.Extensions.LanguageServer.Protocol;
 using OmniSharp.Extensions.LanguageServer.Protocol.Client.Capabilities;
 using OmniSharp.Extensions.LanguageServer.Protocol.Document;
 using OmniSharp.Extensions.LanguageServer.Protocol.Models;
-using OmniSharp.Extensions.LanguageServer.Protocol.Server;
 using OmniSharp.Extensions.LanguageServer.Protocol.Server.Capabilities;
 
 namespace QLanguageServer;
 
-internal partial class TextDocumentHandler : TextDocumentSyncHandlerBase
+public class TextDocumentHandler : TextDocumentSyncHandlerBase
 {
-    private readonly ILanguageServerFacade _languageServerFacade;
+    private readonly IHandlerService _handlerService;
 
     private readonly TextDocumentSelector _textDocumentSelector = new(
         new TextDocumentFilter
@@ -24,9 +22,9 @@ internal partial class TextDocumentHandler : TextDocumentSyncHandlerBase
             Language = "k",
         });
 
-    public TextDocumentHandler(ILanguageServerFacade languageServerFacade)
+    public TextDocumentHandler(IHandlerService handlerService)
     {
-        _languageServerFacade = languageServerFacade;
+        _handlerService = handlerService;
     }
 
     public override TextDocumentAttributes GetTextDocumentAttributes(DocumentUri uri)
@@ -40,37 +38,23 @@ internal partial class TextDocumentHandler : TextDocumentSyncHandlerBase
         return new TextDocumentAttributes(uri, languageId);
     }
 
-    public override Task<Unit> Handle(DidOpenTextDocumentParams request, CancellationToken cancellationToken)
-    {
-        return Unit.Task;
-    }
+    public override async Task<Unit> Handle(DidOpenTextDocumentParams request, CancellationToken cancellationToken) =>
+        await _handlerService.TextDocumentHandler.HandleAsync(request, cancellationToken);
 
-    public override Task<Unit> Handle(DidChangeTextDocumentParams request, CancellationToken cancellationToken)
-    {
-        return Unit.Task;
-    }
+    public override async Task<Unit> Handle(DidChangeTextDocumentParams request, CancellationToken cancellationToken) =>
+        await _handlerService.TextDocumentHandler.HandleAsync(request, cancellationToken);
 
-    public override Task<Unit> Handle(DidSaveTextDocumentParams request, CancellationToken cancellationToken)
-    {
-        return Unit.Task;
-    }
+    public override async Task<Unit> Handle(DidSaveTextDocumentParams request, CancellationToken cancellationToken) =>
+        await _handlerService.TextDocumentHandler.HandleAsync(request, cancellationToken);
 
-    public override Task<Unit> Handle(DidCloseTextDocumentParams request, CancellationToken cancellationToken)
-    {
-        return Unit.Task;
-    }
+    public override async Task<Unit> Handle(DidCloseTextDocumentParams request, CancellationToken cancellationToken) =>
+        await _handlerService.TextDocumentHandler.HandleAsync(request, cancellationToken);
 
     protected override TextDocumentSyncRegistrationOptions CreateRegistrationOptions(
-        TextSynchronizationCapability capability, ClientCapabilities clientCapabilities)
+        TextSynchronizationCapability capability, ClientCapabilities clientCapabilities) => new()
     {
-        return new TextDocumentSyncRegistrationOptions
-        {
-            Change = TextDocumentSyncKind.Full,
-            Save = new SaveOptions { IncludeText = true },
-            DocumentSelector = _textDocumentSelector,
-        };
-    }
-
-  [GeneratedRegex(@"\b[A-Z]{2,}\b")]
-  private static partial Regex UppercaseRegex();
+        Change = TextDocumentSyncKind.Full,
+        Save = new SaveOptions { IncludeText = true },
+        DocumentSelector = _textDocumentSelector,
+    };
 }
