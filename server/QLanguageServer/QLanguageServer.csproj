@@ -5,17 +5,18 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <OutDir>$(ProjectDir)..\out</OutDir>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="McMaster.NETCore.Plugins" Version="1.4.0" />
-      <PackageReference Include="OmniSharp.Extensions.LanguageServer" Version="0.19.9" />
-      <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
-      <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+        <PackageReference Include="McMaster.NETCore.Plugins" Version="1.4.0"/>
+        <PackageReference Include="OmniSharp.Extensions.LanguageServer" Version="0.19.9"/>
+        <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0"/>
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\QLanguageServer.Models\QLanguageServer.Models.csproj" />
+        <ProjectReference Include="..\QLanguageServer.Models\QLanguageServer.Models.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -16,26 +16,22 @@ public class HandlerService : IHandlerService
         _serviceProvider = serviceProvider;
 
         _loader = PluginLoader.CreateFromAssemblyFile(
-            Path.GetFullPath(
-                Path.Join(Environment.ProcessPath, "..", "..", "..", "..", "..", "plugins", "TestProject.dll")
-            ),
+            Path.GetFullPath(Path.Join(Environment.ProcessPath, "..", "..", "plugins", "KdbLint.dll")),
             new[] { typeof(ITextDocumentHandler) },
             config => config.EnableHotReload = true);
         _loader.Reloaded += (_, _) => SetHandlers();
         SetHandlers();
     }
 
-    private T GetHandler<T>() where T : IHandler
+    private T GetHandler<T>(IEnumerable<Type> types) where T : IHandler
     {
-        var type = _loader
-            .LoadDefaultAssembly()
-            .GetTypes()
-            .Single(t => typeof(T).IsAssignableFrom(t) && !t.IsAbstract);
+        var type = types.Single(x => typeof(T).IsAssignableFrom(x) && !x.IsAbstract);
         return (T)ActivatorUtilities.CreateInstance(_serviceProvider, type);
     }
 
     private void SetHandlers()
     {
-        TextDocumentHandler = GetHandler<ITextDocumentHandler>();
+        var types = _loader.LoadDefaultAssembly().GetTypes();
+        TextDocumentHandler = GetHandler<ITextDocumentHandler>(types);
     }
 }

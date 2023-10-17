@@ -5,3 +5,5 @@ node_modules
 bin
 obj
 *.DotSettings.user
+*.pdb
+*.deps.json
