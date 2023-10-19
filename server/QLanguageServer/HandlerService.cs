@@ -23,15 +23,20 @@ public class HandlerService : IHandlerService
         SetHandlers();
     }
 
-    private T GetHandler<T>(IEnumerable<Type> types) where T : IHandler
+    private T GetHandler<T>(IEnumerable<Type> types, T? prevHandler) where T : IHandler
     {
         var type = types.Single(x => typeof(T).IsAssignableFrom(x) && !x.IsAbstract);
-        return (T)ActivatorUtilities.CreateInstance(_serviceProvider, type);
+        var handler = (T)ActivatorUtilities.CreateInstance(_serviceProvider, type);
+        if (prevHandler != null)
+        {
+            handler.SetState(prevHandler.GetState());
+        }
+        return handler;
     }
 
     private void SetHandlers()
     {
         var types = _loader.LoadDefaultAssembly().GetTypes();
-        TextDocumentHandler = GetHandler<ITextDocumentHandler>(types);
+        TextDocumentHandler = GetHandler(types, TextDocumentHandler);
     }
 }

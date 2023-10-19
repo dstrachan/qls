@@ -39,21 +39,21 @@ public class TextDocumentHandler : TextDocumentSyncHandlerBase
     }
 
     public override async Task<Unit> Handle(DidOpenTextDocumentParams request, CancellationToken cancellationToken) =>
-        await _handlerService.TextDocumentHandler.HandleAsync(request, cancellationToken);
+        await _handlerService.TextDocumentHandler.OnOpenAsync(request, cancellationToken);
 
     public override async Task<Unit> Handle(DidChangeTextDocumentParams request, CancellationToken cancellationToken) =>
-        await _handlerService.TextDocumentHandler.HandleAsync(request, cancellationToken);
+        await _handlerService.TextDocumentHandler.OnChangeAsync(request, cancellationToken);
 
     public override async Task<Unit> Handle(DidSaveTextDocumentParams request, CancellationToken cancellationToken) =>
-        await _handlerService.TextDocumentHandler.HandleAsync(request, cancellationToken);
+        await _handlerService.TextDocumentHandler.OnSaveAsync(request, cancellationToken);
 
     public override async Task<Unit> Handle(DidCloseTextDocumentParams request, CancellationToken cancellationToken) =>
-        await _handlerService.TextDocumentHandler.HandleAsync(request, cancellationToken);
+        await _handlerService.TextDocumentHandler.OnCloseAsync(request, cancellationToken);
 
     protected override TextDocumentSyncRegistrationOptions CreateRegistrationOptions(
         TextSynchronizationCapability capability, ClientCapabilities clientCapabilities) => new()
     {
-        Change = TextDocumentSyncKind.Full,
+        Change = TextDocumentSyncKind.Incremental,
         Save = new SaveOptions { IncludeText = true },
         DocumentSelector = _textDocumentSelector,
     };
