@@ -31,12 +31,21 @@ internal static class Program
                 .AddLanguageProtocolLogging()
                 .SetMinimumLevel(LogLevel.Debug)
             )
-            .WithHandler<TextDocumentHandler>()
+            .WithHandler<TextDocumentSyncHandler>()
+            .WithHandler<SemanticTokensHandler>()
             .WithServices(services => services
                 .AddLogging(builder => builder
                     .SetMinimumLevel(LogLevel.Trace))
                 .AddSingleton<IHandlerService, HandlerService>()
-            )
+                .AddSingleton(new TextDocumentSelector(
+                    new TextDocumentFilter
+                    {
+                        Language = "q",
+                    },
+                    new TextDocumentFilter
+                    {
+                        Language = "k",
+                    })))
             .OnInitialize(OnInitializeAsync)
             .OnInitialized(OnInitializedAsync)
             .OnStarted(OnStartedAsync)

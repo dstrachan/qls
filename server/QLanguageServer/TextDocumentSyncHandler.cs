@@ -8,23 +8,15 @@ using OmniSharp.Extensions.LanguageServer.Protocol.Server.Capabilities;
 
 namespace QLanguageServer;
 
-public class TextDocumentHandler : TextDocumentSyncHandlerBase
+internal class TextDocumentSyncHandler : TextDocumentSyncHandlerBase
 {
     private readonly IHandlerService _handlerService;
+    private readonly TextDocumentSelector _textDocumentSelector;
 
-    private readonly TextDocumentSelector _textDocumentSelector = new(
-        new TextDocumentFilter
-        {
-            Language = "q",
-        },
-        new TextDocumentFilter
-        {
-            Language = "k",
-        });
-
-    public TextDocumentHandler(IHandlerService handlerService)
+    public TextDocumentSyncHandler(IHandlerService handlerService, TextDocumentSelector textDocumentSelector)
     {
         _handlerService = handlerService;
+        _textDocumentSelector = textDocumentSelector;
     }
 
     public override TextDocumentAttributes GetTextDocumentAttributes(DocumentUri uri)
@@ -39,16 +31,16 @@ public class TextDocumentHandler : TextDocumentSyncHandlerBase
     }
 
     public override async Task<Unit> Handle(DidOpenTextDocumentParams request, CancellationToken cancellationToken) =>
-        await _handlerService.TextDocumentHandler.OnOpenAsync(request, cancellationToken);
+        await _handlerService.TextDocumentSyncHandler.OnOpenAsync(request, cancellationToken);
 
     public override async Task<Unit> Handle(DidChangeTextDocumentParams request, CancellationToken cancellationToken) =>
-        await _handlerService.TextDocumentHandler.OnChangeAsync(request, cancellationToken);
+        await _handlerService.TextDocumentSyncHandler.OnChangeAsync(request, cancellationToken);
 
     public override async Task<Unit> Handle(DidSaveTextDocumentParams request, CancellationToken cancellationToken) =>
-        await _handlerService.TextDocumentHandler.OnSaveAsync(request, cancellationToken);
+        await _handlerService.TextDocumentSyncHandler.OnSaveAsync(request, cancellationToken);
 
     public override async Task<Unit> Handle(DidCloseTextDocumentParams request, CancellationToken cancellationToken) =>
-        await _handlerService.TextDocumentHandler.OnCloseAsync(request, cancellationToken);
+        await _handlerService.TextDocumentSyncHandler.OnCloseAsync(request, cancellationToken);
 
     protected override TextDocumentSyncRegistrationOptions CreateRegistrationOptions(
         TextSynchronizationCapability capability, ClientCapabilities clientCapabilities) => new()

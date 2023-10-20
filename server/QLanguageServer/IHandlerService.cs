@@ -2,7 +2,8 @@ using QLanguageServer.Models;
 
 namespace QLanguageServer;
 
-public interface IHandlerService
+internal interface IHandlerService
 {
-    ITextDocumentHandler TextDocumentHandler { get; }
+    ITextDocumentSyncHandler TextDocumentSyncHandler { get; }
+    ISemanticTokensHandler SemanticTokensHandler { get; }
 }

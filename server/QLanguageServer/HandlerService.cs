@@ -4,12 +4,15 @@ using QLanguageServer.Models;
 
 namespace QLanguageServer;
 
-public class HandlerService : IHandlerService
+internal class HandlerService : IHandlerService
 {
     private readonly IServiceProvider _serviceProvider;
     private readonly PluginLoader _loader;
 
-    public ITextDocumentHandler TextDocumentHandler { get; private set; } = null!;
+    private IReloadableState? _state;
+
+    public ITextDocumentSyncHandler TextDocumentSyncHandler { get; private set; } = null!;
+    public ISemanticTokensHandler SemanticTokensHandler { get; private set; } = null!;
 
     public HandlerService(IServiceProvider serviceProvider)
     {
@@ -17,26 +20,30 @@ public class HandlerService : IHandlerService
 
         _loader = PluginLoader.CreateFromAssemblyFile(
             Path.GetFullPath(Path.Join(Environment.ProcessPath, "..", "..", "plugins", "KdbLint.dll")),
-            new[] { typeof(ITextDocumentHandler) },
+            new[] { typeof(ITextDocumentSyncHandler), typeof(ISemanticTokensHandler) },
             config => config.EnableHotReload = true);
         _loader.Reloaded += (_, _) => SetHandlers();
         SetHandlers();
     }
 
-    private T GetHandler<T>(IEnumerable<Type> types, T? prevHandler) where T : IHandler
+    private T CreateInstance<T>(IEnumerable<Type> types)
     {
         var type = types.Single(x => typeof(T).IsAssignableFrom(x) && !x.IsAbstract);
-        var handler = (T)ActivatorUtilities.CreateInstance(_serviceProvider, type);
-        if (prevHandler != null)
-        {
-            handler.SetState(prevHandler.GetState());
-        }
-        return handler;
+        return (T)ActivatorUtilities.CreateInstance(_serviceProvider, type);
     }
 
     private void SetHandlers()
     {
         var types = _loader.LoadDefaultAssembly().GetTypes();
-        TextDocumentHandler = GetHandler(types, TextDocumentHandler);
+
+        var oldState = _state;
+        _state = CreateInstance<IReloadableState>(types);
+        if (oldState != null)
+        {
+            _state.SetState(oldState.GetState());
+        }
+
+        TextDocumentSyncHandler = CreateInstance<ITextDocumentSyncHandler>(types);
+        SemanticTokensHandler = CreateInstance<ISemanticTokensHandler>(types);
     }
 }
