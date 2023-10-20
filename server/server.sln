@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLanguageServer", "QLanguag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLanguageServer.Models", "QLanguageServer.Models\QLanguageServer.Models.csproj", "{F6C0ED4A-5B10-4AC7-9616-BD5AEFAC10E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{3F9A1BC1-3F01-4281-86D5-276BE7EAFBF5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +18,5 @@ Global
 		{F6C0ED4A-5B10-4AC7-9616-BD5AEFAC10E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6C0ED4A-5B10-4AC7-9616-BD5AEFAC10E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6C0ED4A-5B10-4AC7-9616-BD5AEFAC10E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F9A1BC1-3F01-4281-86D5-276BE7EAFBF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F9A1BC1-3F01-4281-86D5-276BE7EAFBF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F9A1BC1-3F01-4281-86D5-276BE7EAFBF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F9A1BC1-3F01-4281-86D5-276BE7EAFBF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
