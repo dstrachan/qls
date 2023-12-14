@@ -6,4 +6,5 @@ internal interface IHandlerService
 {
     ITextDocumentSyncHandler TextDocumentSyncHandler { get; }
     ISemanticTokensHandler SemanticTokensHandler { get; }
+    IHoverHandler HoverHandler { get; }
 }

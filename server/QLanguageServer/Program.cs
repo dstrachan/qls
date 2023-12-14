@@ -18,10 +18,10 @@ internal static class Program
             .MinimumLevel.Verbose()
             .CreateLogger();
 
-        while (!Debugger.IsAttached)
-        {
-            await Task.Delay(1000);
-        }
+        // while (!Debugger.IsAttached)
+        // {
+        //     await Task.Delay(1000);
+        // }
 
         var server = await LanguageServer.From(options => options
             .WithInput(Console.OpenStandardInput())
@@ -33,6 +33,7 @@ internal static class Program
             )
             .WithHandler<TextDocumentSyncHandler>()
             .WithHandler<SemanticTokensHandler>()
+            .WithHandler<HoverHandler>()
             .WithServices(services => services
                 .AddLogging(builder => builder
                     .SetMinimumLevel(LogLevel.Trace))

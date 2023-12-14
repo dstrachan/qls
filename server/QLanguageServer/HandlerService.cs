@@ -13,6 +13,7 @@ internal class HandlerService : IHandlerService
 
     public ITextDocumentSyncHandler TextDocumentSyncHandler { get; private set; } = null!;
     public ISemanticTokensHandler SemanticTokensHandler { get; private set; } = null!;
+    public IHoverHandler HoverHandler { get; private set; } = null!;
 
     public HandlerService(IServiceProvider serviceProvider)
     {
@@ -20,7 +21,7 @@ internal class HandlerService : IHandlerService
 
         _loader = PluginLoader.CreateFromAssemblyFile(
             Path.GetFullPath(Path.Join(Environment.ProcessPath, "..", "..", "plugins", "KdbLint.dll")),
-            new[] { typeof(ITextDocumentSyncHandler), typeof(ISemanticTokensHandler) },
+            new[] { typeof(ITextDocumentSyncHandler), typeof(ISemanticTokensHandler), typeof(IHoverHandler) },
             config => config.EnableHotReload = true);
         _loader.Reloaded += (_, _) => SetHandlers();
         SetHandlers();
@@ -45,5 +46,6 @@ internal class HandlerService : IHandlerService
 
         TextDocumentSyncHandler = CreateInstance<ITextDocumentSyncHandler>(types);
         SemanticTokensHandler = CreateInstance<ISemanticTokensHandler>(types);
+        HoverHandler = CreateInstance<IHoverHandler>(types);
     }
 }
