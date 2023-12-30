@@ -2,9 +2,9 @@ using OmniSharp.Extensions.LanguageServer.Protocol.Client.Capabilities;
 using OmniSharp.Extensions.LanguageServer.Protocol.Document;
 using OmniSharp.Extensions.LanguageServer.Protocol.Models;
 
-namespace QLanguageServer;
+namespace QLanguageServer.Handlers;
 
-internal class SemanticTokensHandler(IHandlerService handlerService, TextDocumentSelector textDocumentSelector)
+public class SemanticTokensHandler(IHandlerService handlerService, TextDocumentSelector textDocumentSelector)
     : SemanticTokensHandlerBase
 {
     protected override SemanticTokensRegistrationOptions CreateRegistrationOptions(SemanticTokensCapability capability,

@@ -4,11 +4,12 @@ using Microsoft.Extensions.Logging;
 using OmniSharp.Extensions.LanguageServer.Protocol.Models;
 using OmniSharp.Extensions.LanguageServer.Protocol.Server;
 using OmniSharp.Extensions.LanguageServer.Server;
+using QLanguageServer.Handlers;
 using Serilog;
 
 namespace QLanguageServer;
 
-internal static class Program
+public static class Program
 {
     public static async Task Main()
     {
@@ -31,9 +32,11 @@ internal static class Program
                 .AddLanguageProtocolLogging()
                 .SetMinimumLevel(LogLevel.Debug)
             )
-            .WithHandler<TextDocumentSyncHandler>()
-            .WithHandler<SemanticTokensHandler>()
+            .WithHandler<DefinitionHandler>()
+            .WithHandler<DocumentFormattingHandler>()
             .WithHandler<HoverHandler>()
+            .WithHandler<SemanticTokensHandler>()
+            .WithHandler<TextDocumentSyncHandler>()
             .WithServices(services => services
                 .AddLogging(builder => builder
                     .SetMinimumLevel(LogLevel.Trace))

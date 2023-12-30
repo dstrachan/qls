@@ -4,5 +4,5 @@ namespace QLanguageServer.Models;
 
 public interface IHoverHandler : IHandler
 {
-    Task<Hover?> OnHoverAsync(HoverParams request, CancellationToken cancellationToken);
+    Task<Hover?> HandleAsync(HoverParams request, CancellationToken cancellationToken);
 }
